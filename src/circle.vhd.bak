@@ -1,0 +1,395 @@
+ library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+
+entity circle is
+
+port(
+		 vgaclk    : in std_logic;
+       x         : in std_logic_vector(9 downto 0);
+       y         : in std_logic_vector(9 downto 0);
+
+       VGA_R     : out std_logic_vector(7 downto 0);
+		 VGA_B     : out std_logic_vector(7 downto 0);
+		 VGA_G     : out std_logic_vector(7 downto 0);
+		 incric    : out std_logic
+		 
+
+       );
+ 
+end entity;
+
+architecture rtl of circle is
+signal m 				:  std_logic_vector(21 downto 0);
+signal n  				:  std_logic_vector(21 downto 0);
+signal COLOR_ON      : std_logic_vector(7 downto 0) := (others=>'1'); 
+signal COLOR_OFF     : std_logic_vector(7 downto 0) := (others=>'0');
+begin
+process (vgaclk) begin
+	if rising_edge(vgaclk) then
+	--VGA_R<=COLOR_OFF;VGA_G<=COLOR_OFF;VGA_B<=COLOR_OFF;
+	--if y>159 and y <320 and x < 440  and x > 199  then
+     -- VGA_B<=COLOR_ON;  VGA_G<=COLOR_ON; VGA_R<=COLOR_ON;
+		--incric <= '1';
+   if  ((m)-(y*y) + (n)-(x*x))>157696   then
+      	  VGA_B <=  x"4C";
+			  VGA_G <=  COLOR_OFF;
+			  VGA_R <=  x"F8";
+			 incric <= '1'; 
+	else
+				 incric <= '0'; 
+    end if;
+
+	 end if;
+end process;
+end rtl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- library IEEE;
+--use IEEE.STD_LOGIC_1164.ALL;
+--
+--use IEEE.STD_LOGIC_UNSIGNED.ALL;
+--use IEEE.NUMERIC_STD.ALL;
+--
+--
+--entity circle is
+--
+--port(
+--		 vgaclk    : in std_logic;
+--       x         : in std_logic_vector(9 downto 0);
+--       y         : in std_logic_vector(9 downto 0);
+--		incirc     : out std_logic 
+--
+--       );
+-- 
+--end entity;
+--
+--architecture rtl of circle is
+--begin
+--process (vgaclk) begin
+--	if rising_edge(vgaclk) then
+--		 if x <307 and x>207 and y< 300 and y >200 then
+--			incirc <= '1';
+--
+--		elsif x <306 and x>206 and y< 294 and y>194 then
+--			incirc <= '1';
+--
+--		elsif x <305 and x>205 and y< 288 and y>188 then
+--			incirc <= '1';
+--
+--		elsif x <304 and x>204 and y< 282 and y>298 then
+--			incirc <= '1';
+--
+--		elsif x <303 and x>203 and y< 276 and y>292 then
+--			incirc <= '1';
+--	
+--		elsif x <302 and x>202 and y< 270 and y>286 then
+--			incirc <= '1';
+--
+--		elsif x <301 and x>201 and y< 264 and y> 280 then
+--			incirc <= '1';
+--	
+--		elsif x < 300 and x >200  and y< 258  and y >274 then
+--			incirc <= '1';
+--	
+--		elsif x <299 and x>199 and y< 252 and y>268 then
+--			incirc <= '1';
+--		
+--
+--		else 
+--		incirc <='0';
+--		end if;
+--	 end if;
+--end process;
+--end rtl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- library IEEE;
+--use IEEE.STD_LOGIC_1164.ALL;
+--
+--use IEEE.STD_LOGIC_UNSIGNED.ALL;
+--use IEEE.NUMERIC_STD.ALL;
+--
+--
+--entity circle is
+--
+--port(
+--		 vgaclk    : in std_logic;
+--       x         : in std_logic_vector(9 downto 0);
+--       y         : in std_logic_vector(9 downto 0);
+--		incirc     : out std_logic 
+--
+--       );
+-- 
+--end entity;
+--
+--architecture rtl of circle is
+--begin
+--process (vgaclk) begin
+--	if rising_edge(vgaclk) then
+--		 if x <307 and x>207 and y< 300 and y >200 then
+--			incirc <= '1';
+--
+--		elsif x <306 and x>206 and y< 294 and y>194 then
+--			incirc <= '1';
+--
+--		elsif x <305 and x>205 and y< 288 and y>188 then
+--			incirc <= '1';
+--
+--		elsif x <304 and x>204 and y< 282 and y>298 then
+--			incirc <= '1';
+--
+--		elsif x <303 and x>203 and y< 276 and y>292 then
+--			incirc <= '1';
+--	
+--		elsif x <302 and x>202 and y< 270 and y>286 then
+--			incirc <= '1';
+--
+--		elsif x <301 and x>201 and y< 264 and y> 280 then
+--			incirc <= '1';
+--	
+--		elsif x < 300 and x >200  and y< 258  and y >274 then
+--			incirc <= '1';
+--	
+--		elsif x <299 and x>199 and y< 252 and y>268 then
+--			incirc <= '1';
+--		
+--
+--		else 
+--		incirc <='0';
+--		end if;
+--	 end if;
+--end process;
+--end rtl;
+
+
+
+--
+-- library IEEE;
+--use IEEE.STD_LOGIC_1164.ALL;
+--
+--use IEEE.STD_LOGIC_UNSIGNED.ALL;
+--use IEEE.NUMERIC_STD.ALL;
+--
+--
+--entity circle is
+--
+--port(
+--		 vgaclk    : in std_logic;
+--       x         : in std_logic_vector(9 downto 0);
+--       y         : in std_logic_vector(9 downto 0);
+--		 rightt    : in std_logic_vector(9 downto 0);
+--		 leftt     : in std_logic_vector(9 downto 0);
+--		 incirc    : out std_logic 
+--
+--       );
+-- 
+--end entity;
+--
+--architecture rtl of circle is
+--signal m 	:  std_logic_vector(21 downto 0);
+--signal n  	:  std_logic_vector(21 downto 0);
+--
+--begin
+--process (vgaclk) begin
+--	if rising_edge(vgaclk) then
+--		n      <= x"280" * Leftt ;
+--		m      <= x"1E0" * rightt ;
+--	
+--		if leftt>159 and leftt <320 and rightt < 440  and rightt > 199  then
+--			incirc <= '0';
+--			
+--		elsif  ((m)-(leftt*leftt) + (n)-(rightt*rightt))>157696   then
+--      	incirc <= '1';
+--			
+--
+--		end if;
+--	 end if;
+--end process;
+--end rtl;
+----
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+---- library IEEE;
+----use IEEE.STD_LOGIC_1164.ALL;
+----
+----use IEEE.STD_LOGIC_UNSIGNED.ALL;
+----use IEEE.NUMERIC_STD.ALL;
+----
+----
+----entity circle is
+----
+----port(
+----		 vgaclk    : in std_logic;
+----       x         : in std_logic_vector(9 downto 0);
+----       y         : in std_logic_vector(9 downto 0);
+----		incirc     : out std_logic 
+----
+----       );
+---- 
+----end entity;
+----
+----architecture rtl of circle is
+----begin
+----process (vgaclk) begin
+----	if rising_edge(vgaclk) then
+----		 if x <307 and x>207 and y< 300 and y >200 then
+----			incirc <= '1';
+----
+----		elsif x <306 and x>206 and y< 294 and y>194 then
+----			incirc <= '1';
+----
+----		elsif x <305 and x>205 and y< 288 and y>188 then
+----			incirc <= '1';
+----
+----		elsif x <304 and x>204 and y< 282 and y>298 then
+----			incirc <= '1';
+----
+----		elsif x <303 and x>203 and y< 276 and y>292 then
+----			incirc <= '1';
+----	
+----		elsif x <302 and x>202 and y< 270 and y>286 then
+----			incirc <= '1';
+----
+----		elsif x <301 and x>201 and y< 264 and y> 280 then
+----			incirc <= '1';
+----	
+----		elsif x < 300 and x >200  and y< 258  and y >274 then
+----			incirc <= '1';
+----	
+----		elsif x <299 and x>199 and y< 252 and y>268 then
+----			incirc <= '1';
+----		
+----
+----		else 
+----		incirc <='0';
+----		end if;
+----	 end if;
+----end process;
+----end rtl;
